@@ -1,0 +1,23 @@
+.form {
+    width: 100%;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.form__input {
+    width: 80%;
+}
+
+.form__btn {
+    width: fit-content;
+    padding: 0 19px;
+    height: 25px;
+    line-height: 1;
+    margin: 0 0 15px auto;
+}
