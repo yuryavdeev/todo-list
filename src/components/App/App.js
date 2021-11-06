@@ -45,8 +45,6 @@ const App = () => {
     setInitialTodosList(updatedTodosList)
   }
 
-  console.log(initialTodosList)
-
 
   return (
     <TodosContext.Provider value={initialTodosList}>

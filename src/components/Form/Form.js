@@ -73,10 +73,7 @@ const Form = React.memo(({ addTask, placeholder }) => {
                     <button disabled className="form__btn btn waves-effect waves-light" type="submit">add</button>
                 }
 
-
-
             </form>
-
         </div>
     )
 })

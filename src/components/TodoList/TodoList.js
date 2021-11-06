@@ -20,7 +20,6 @@ const TodoList = React.memo(({ todosList, handleChangeTodosList, isSubmitting })
                 :
                 list = todosList
 
-
         setTasksToRender(list.map((item, index) =>
             <TodoItem
                 key={item.id}
@@ -31,7 +30,6 @@ const TodoList = React.memo(({ todosList, handleChangeTodosList, isSubmitting })
             />
         ))
     }, [selectedView, todosList, click])
-
 
 
     // обновление task'а при изме чекбокса и редактировании
@@ -72,8 +70,6 @@ const TodoList = React.memo(({ todosList, handleChangeTodosList, isSubmitting })
                     !isSubmitting &&
                     <p>You have no tasks added!</p>
             }
-
-
 
         </div>
     )

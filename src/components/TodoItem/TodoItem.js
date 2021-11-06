@@ -43,7 +43,6 @@ const TodoItem = React.memo(({ index, task, handleTaskChange, handleRemoveTask }
 
     return (
         <li className="todo-item">
-
             <label>
                 <input
                     className="todo-item__checkbox"
@@ -73,7 +72,6 @@ const TodoItem = React.memo(({ index, task, handleTaskChange, handleRemoveTask }
                     placeholder={task.title.toUpperCase()}
                 />
             }
-
         </li >
     )
 })
