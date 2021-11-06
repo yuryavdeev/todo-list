@@ -60,7 +60,6 @@ const App = () => {
         {isSubmitting && <Preloader />}
 
         <TodoList
-          todosList={initialTodosList}
           handleChangeTodosList={handleChangeTodosList}
           isSubmitting={isSubmitting}
         />

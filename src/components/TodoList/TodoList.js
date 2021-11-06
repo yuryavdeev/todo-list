@@ -1,9 +1,11 @@
 import React from 'react'
 import './TodoList.css'
 import TodoItem from '../TodoItem/TodoItem'
+import { TodosContext } from '../../contexts/TodosContext'
 
-const TodoList = React.memo(({ todosList, handleChangeTodosList, isSubmitting }) => {
+const TodoList = React.memo(({ handleChangeTodosList, isSubmitting }) => {
 
+    const todosList = React.useContext(TodosContext)
     const [click, setClick] = React.useState(false)
     const [tasksToRender, setTasksToRender] = React.useState([])
     const [selectedView, setSelectedView] = React.useState('all')
