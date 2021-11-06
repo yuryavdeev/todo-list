@@ -1,4 +1,11 @@
 .todo-list {
     width: 100%;
-    margin-top: 30px;
+}
+
+.todo-list__select{
+    display: block; 
+    background-color: rgb(232, 240, 254);;
+    width: 50%,;
+    border-bottom: 2px solid #ccc;
+   
 }

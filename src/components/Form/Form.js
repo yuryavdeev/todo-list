@@ -6,33 +6,39 @@ const Form = React.memo(({ addTask, placeholder }) => {
 
     const initialTodosList = React.useContext(TodosContext)
     const [inputValue, setInputValue] = React.useState('')
+    const [showInput, setShowInput] = React.useState('')
     const [message, setMessage] = React.useState('')
 
 
-    const handleInput = (e) => {
-        const task = e.target.value.trim()
-        if (task.length > 4) {
-            setInputValue(task)
-            setMessage('')
-        } else {
-            setMessage('it requires 5 symbols, but no more than 50')
+    React.useEffect(() => {
+        if (inputValue) {
+            if (inputValue.length > 4) {
+                setMessage('')
+            } else {
+                setMessage('it requires 5 symbols, but no more than 50')
+            }
         }
-    }
+    }, [inputValue])
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (inputValue) {
+        if (!message) {
             // если t.title === inputValue - filter вернет массив из одинаковых task'ов
-            if (!initialTodosList.filter(t => t.title === inputValue.toLowerCase()).length) {
+            if (!initialTodosList.filter(t => t.title.toLowerCase() === inputValue.toLowerCase()).length) {
                 addTask(inputValue)
                 setInputValue('')
-                e.target[0].value = ''
-                setMessage('')
+                setShowInput('')
             } else {
                 setMessage('The same task has already been added!')
             }
         }
+    }
+
+
+    const handleInput = (e) => {
+        setShowInput(e.target.value)
+        setInputValue(e.target.value.trim())
     }
 
 
@@ -46,6 +52,7 @@ const Form = React.memo(({ addTask, placeholder }) => {
                     id="input_text"
                     type="text"
                     placeholder={placeholder}
+                    value={showInput}
                     required
                     onChange={handleInput}
                     minLength="5"
@@ -59,9 +66,14 @@ const Form = React.memo(({ addTask, placeholder }) => {
                     <span style={{ color: "red" }}>{message}</span>
                 }
 
-                <button className="form__btn btn waves-effect waves-light" type="submit">
-                    ok
-                </button>
+                {
+                    inputValue || !message ?
+                    <button className="form__btn btn waves-effect waves-light" type="submit">add</button>
+                    :
+                    <button disabled className="form__btn btn waves-effect waves-light" type="submit">add</button>
+                }
+
+
 
             </form>
 

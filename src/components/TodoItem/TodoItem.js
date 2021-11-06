@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import pencil from '../../images/pencil.svg'
 import Form from '../Form/Form'
 
-const TodoItem = React.memo(({ task, handleTaskChange, handleRemoveTask }) => {
+const TodoItem = React.memo(({ index, task, handleTaskChange, handleRemoveTask }) => {
 
     const [timeOfCreation, setTimeOfCreation] = React.useState('')
     const [isEditFieldVisible, setIsEditFieldVisible] = React.useState(false)
@@ -56,7 +56,7 @@ const TodoItem = React.memo(({ task, handleTaskChange, handleRemoveTask }) => {
             </label>
 
             <p className={`todo-item__text ${task.completed && 'todo-item__text_crossed-out'} ${isEditFieldVisible && 'todo-item__text_color'}`}>
-                {task.title.toUpperCase()}
+                {index + '. ' + task.title.toUpperCase()}
                 <br />
                 <span className="todo-item__time">
                     {timeOfCreation}

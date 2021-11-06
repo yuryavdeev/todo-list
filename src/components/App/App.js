@@ -31,7 +31,7 @@ const App = () => {
     setInitialTodosList(initialTodosList.concat(
       {
         completed: false,
-        id: initialTodosList.length + 1,
+        id: new Date(),
         title: task,
         userId: 1,
         date: new Date().toISOString(),
@@ -44,6 +44,8 @@ const App = () => {
   const handleChangeTodosList = (updatedTodosList) => {
     setInitialTodosList(updatedTodosList)
   }
+
+  console.log(initialTodosList)
 
 
   return (
@@ -60,6 +62,7 @@ const App = () => {
         {isSubmitting && <Preloader />}
 
         <TodoList
+          todosList={initialTodosList}
           handleChangeTodosList={handleChangeTodosList}
           isSubmitting={isSubmitting}
         />
