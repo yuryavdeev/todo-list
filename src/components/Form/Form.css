@@ -12,6 +12,8 @@
 
 .form__input {
     width: 80%;
+    background: url(../../images/pencilInput.png) no-repeat left 6px center;
+    background-size: 15px;
 }
 
 .form__btn {

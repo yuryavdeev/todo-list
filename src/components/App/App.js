@@ -54,7 +54,6 @@ const App = () => {
 
         <Form
           addTask={addTask}
-          placeholder='...todo'
         />
 
         {isSubmitting && <Preloader />}

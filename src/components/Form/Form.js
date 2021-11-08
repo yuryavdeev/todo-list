@@ -2,7 +2,7 @@ import React from 'react'
 import './Form.css'
 import { TodosContext } from '../../contexts/TodosContext'
 
-const Form = React.memo(({ addTask, placeholder }) => {
+const Form = React.memo(({ addTask, taskTitle }) => {
 
     const initialTodosList = React.useContext(TodosContext)
     const [inputValue, setInputValue] = React.useState('')
@@ -33,8 +33,12 @@ const Form = React.memo(({ addTask, placeholder }) => {
                 setMessage('The same task has already been added!')
             }
         }
+        else {
+            setMessage('Add a task!')
+        }
     }
 
+    console.log(inputValue)
 
     const handleInput = (e) => {
         setShowInput(e.target.value)
@@ -49,15 +53,20 @@ const Form = React.memo(({ addTask, placeholder }) => {
                 <label className="form__label" htmlFor="input_text"></label>
                 <input
                     className="form__input"
+                    style={{ paddingLeft: '30px' }}
                     id="input_text"
                     type="text"
-                    placeholder={placeholder}
-                    value={showInput}
+                    placeholder='...todo'
+                    value={
+                        showInput ?
+                            showInput : taskTitle ?
+                                taskTitle : ''
+                    }
                     required
                     onChange={handleInput}
                     minLength="5"
                     maxLength="50"
-                    pattern='^[0-9A-Za-zА-Яа-яЁё\s\-]{5,50}$'
+                    pattern='^[0-9A-Za-zА-Яа-яЁё\.\s\-]{5,50}$'
                     title="The field can only contain latin, cyrillic, numbers, space or hyphen"
                 />
 
@@ -67,10 +76,10 @@ const Form = React.memo(({ addTask, placeholder }) => {
                 }
 
                 {
-                    inputValue || !message ?
-                    <button className="form__btn btn waves-effect waves-light" type="submit">add</button>
-                    :
-                    <button disabled className="form__btn btn waves-effect waves-light" type="submit">add</button>
+                    inputValue && !message ?
+                        <button className="form__btn btn waves-effect waves-light" type="submit">add</button>
+                        :
+                        <button disabled className="form__btn btn waves-effect waves-light" type="submit">add</button>
                 }
 
             </form>

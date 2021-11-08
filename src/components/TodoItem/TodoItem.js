@@ -69,7 +69,7 @@ const TodoItem = React.memo(({ index, task, handleTaskChange, handleRemoveTask }
                 isEditFieldVisible &&
                 <Form
                     addTask={changeTask}
-                    placeholder={task.title.toUpperCase()}
+                    taskTitle={task.title}
                 />
             }
         </li >
