@@ -7,8 +7,11 @@ const Form = React.memo(({ addTask, taskTitle }) => {
     const initialTodosList = React.useContext(TodosContext)
     const [inputValue, setInputValue] = React.useState('')
     const [showInput, setShowInput] = React.useState('')
+    const [changedTask, setChangedTask] = React.useState(taskTitle ? taskTitle : '')
     const [message, setMessage] = React.useState('')
 
+
+    console.log(changedTask)
 
     React.useEffect(() => {
         if (inputValue) {
@@ -33,14 +36,11 @@ const Form = React.memo(({ addTask, taskTitle }) => {
                 setMessage('The same task has already been added!')
             }
         }
-        else {
-            setMessage('Add a task!')
-        }
     }
 
-    console.log(inputValue)
 
     const handleInput = (e) => {
+        setChangedTask('')
         setShowInput(e.target.value)
         setInputValue(e.target.value.trim())
     }
@@ -59,8 +59,8 @@ const Form = React.memo(({ addTask, taskTitle }) => {
                     placeholder='...todo'
                     value={
                         showInput ?
-                            showInput : taskTitle ?
-                                taskTitle : ''
+                            showInput : changedTask ?
+                                changedTask : ''
                     }
                     required
                     onChange={handleInput}
