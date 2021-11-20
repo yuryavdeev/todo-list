@@ -43,16 +43,14 @@ const TodoItem = React.memo(({ index, task, handleTaskChange, handleRemoveTask }
 
     return (
         <li className="todo-item">
-            <label>
-                <input
-                    className="todo-item__checkbox"
-                    type="checkbox"
-                    onChange={handleCheckboxChange}
-                    checked={task.completed}
-                    disabled={isEditFieldVisible}
-                />
-                <span></span>
-            </label>
+            <input
+                className="todo-item__checkbox"
+                type="checkbox"
+                onChange={handleCheckboxChange}
+                checked={task.completed}
+                disabled={isEditFieldVisible}
+            />
+            <span></span>
 
             <p className={`todo-item__text ${task.completed && 'todo-item__text_crossed-out'} ${isEditFieldVisible && 'todo-item__text_color'}`}>
                 {index + '. ' + task.title.toUpperCase()}

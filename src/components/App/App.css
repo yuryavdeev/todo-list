@@ -1,4 +1,7 @@
+@import-normalize;
+
 @import url(../../../node_modules/materialize-css/dist/css/materialize.css);
+
 
 body {
     background-color: rgb(245, 248, 248);
