@@ -1,8 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import App from './components/App/App';
+//  ф-я test - для создания нового теста, приним. 3 арг.: 1 - строка с названием теста, 2 - ф-я с логикой теста, 3 - таймаут (для асинх. кода). 
+// вместо test() можно использовать it() -> pазницы нет -> it() это просто алиас на функцию test().
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('My test', () => {
+  expect(Math.max(1, 5, 10)).toBe(10)
+})
